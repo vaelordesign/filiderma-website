@@ -64,6 +64,44 @@ Toutes les images sont des **photos libres de droits (Unsplash)**, choisies comm
 
 Site statique autonome (HTML/CSS/JS), sans base de données ni back-end — les modifications de texte, photos ou couleurs se font directement dans ces fichiers. Julien s'occupe des modifications sur demande de Dominique.
 
+## Emplacement des fichiers et sauvegardes
+
+- **Dossier local** : `C:\Users\charl\OneDrive\Bureau\Siteweb\Dominique\` — synchronisé automatiquement dans OneDrive (donc déjà sauvegardé dans le cloud Microsoft, indépendamment de tout compte Claude).
+- **Dépôt GitHub** (source de vérité, sauvegarde + historique complet) : https://github.com/charlesmartel2506/filiderma-website — compte GitHub `charlesmartel2506`.
+- **Site en ligne (GitHub Pages)** : https://charlesmartel2506.github.io/filiderma-website/ — gratuit, pas de facturation liée au trafic (seules des limites très généreuses, ~100 Go/mois, très loin d'être atteintes par un site de clinique). Risque de fermeture par GitHub quasi nul (seulement en cas d'abus/violation de leurs conditions).
+- **Aperçu local pour tester avant publication** : config `filiderma` dans `.claude/launch.json` (à la racine de `Bureau/Typing/`) → lance `npx http-server` sur le port 8420.
+
+### Comment publier une modification (rappel pour Claude, futures sessions)
+
+```
+cd "C:\Users\charl\OneDrive\Bureau\Siteweb\Dominique"
+git add -A
+git commit -m "description du changement"
+git push
+```
+Le site en ligne se met à jour automatiquement (1-2 minutes) après le `push` — pas d'étape manuelle supplémentaire sur GitHub.
+
+### Nom de domaine
+
+Pas encore de domaine officiel (ex. `filiderma.ca`) — décision prise le 24 juillet 2026 d'attendre que le contenu soit finalisé avec Dominique avant d'en acheter un. Quand ce sera fait : ~15-20$/an chez un registraire (Namecheap, Google Domains, etc.), pointé en DNS vers le GitHub Pages actuel — aucune reconstruction nécessaire, le site reste exactement où il est.
+
+## Historique des décisions (chronologie, session du 22-24 juillet 2026)
+
+1. **22 juillet** — Demande initiale de Julien : site pour Dominique Filion (FiliDerma), basé sur transcription audio d'un enregistrement de Dominique.
+2. Clarifié avec Julien : édition future du site se fait par **fichiers HTML/CSS que Claude modifie sur demande** (pas d'interface visuelle type Wix/Elementor, pas de formulaire d'admin) — voir [[feedback-clarify-scope-before-building]] en mémoire, leçon tirée du projet Sicléo.
+3. Clarifié sur les photos avant/après : **pas de vraies photos d'autres cliniques** présentées comme celles de Dominique (trompeur + droits d'auteur/vie privée) → images stock désaturées avec badge « Photos à venir » à la place.
+4. Site construit : hero, à propos, philosophie (âges), traitements, avant/après (curseur interactif), témoignages placeholder, contact — inspiré de vicpark.com et stationlmtl.com mais original.
+5. **24 juillet** — Ajout de la transcription audio réelle (Laval, neuromodulateurs/comblement/biostimulants, philosophie prévention 18-25-40 ans initiale).
+6. **24 juillet** — Publication sur GitHub Pages (dépôt `filiderma-website` créé, Pages activé).
+7. **24 juillet** — Discussion hébergement : confirmé que GitHub Pages est gratuit sans facturation au trafic ; décision d'attendre avant d'acheter un domaine.
+8. **24 juillet** — Série de corrections de contenu demandées par Julien (relayant les demandes de Dominique) :
+   - Retrait de la mention « (dont Botox®) »
+   - Retrait de l'adresse exacte (seule la ville Laval, Québec reste affichée) — demande explicite de la cliente
+   - Tranches d'âge changées de 18/25/40 ans à **20/30/40 ans**
+   - Ajout des traitements **PRP** et **Microneedling**
+   - Usage thérapeutique des neuromodulateurs (migraines, bruxisme, hyperhidrose) : d'abord exclu du site sur demande, puis **ajouté** sur demande inverse le même jour
+9. **24 juillet** — Julien prévoit de créer un nouveau compte Claude ; confirmé que rien (fichiers, dépôt GitHub, site en ligne) n'est lié au compte Claude — tout reste accessible tant que c'est le même ordinateur (OneDrive) et le même compte GitHub.
+
 ## À faire / en attente
 
 - [ ] Vraie photo de Dominique Filion
@@ -71,4 +109,4 @@ Site statique autonome (HTML/CSS/JS), sans base de données ni back-end — les 
 - [ ] Confirmer la liste des services complémentaires
 - [ ] Confirmer les détails de formation (établissement, formateurs) si Dominique veut les mentionner
 - [ ] Vrais témoignages de clientes
-- [ ] Décider d'un nom de domaine et d'un hébergement pour mettre le site en ligne
+- [ ] Nom de domaine officiel — en attente, pas urgent (voir section « Nom de domaine » ci-dessus)

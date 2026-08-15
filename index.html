@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<script>document.documentElement.className += " js";</script>
 
 <!-- ============ HEADER ============ -->
 <header class="fd-header" id="fd-header">
@@ -40,8 +41,9 @@
 <!-- ============ HERO ============ -->
 <section class="fd-hero" id="accueil">
   <div class="fd-hero__bg">
-    <img src="images/hero-clinique.jpg" alt="Salle de soins FiliDerma" loading="eager">
+    <img class="v3-photo" src="images/hero-clinique.jpg" alt="Salle de soins FiliDerma" loading="eager">
     <div class="fd-hero__overlay"></div>
+    <div data-vfond='{"motif":"aurore","couleur":"#b9805f","couleur2":"#e7cdb8","opacite":0.30,"densite":0.9,"dessous":false}'></div>
   </div>
   <div class="fd-container fd-hero__content">
     <p class="fd-eyebrow reveal">Clinique médico-esthétique · Laval</p>
@@ -151,6 +153,12 @@
 </section>
 
 <!-- ============ SERVICES ============ -->
+<div class="fd-bande">
+  <img src="images/ambiance-soin.jpg" alt="" loading="lazy">
+  <div class="fd-bande__voile"></div>
+  <div class="fd-bande__t"><div class="fd-container"><p>Un visage n'est pas une tendance. C'est le vôtre.</p></div></div>
+</div>
+
 <section class="fd-services" id="services">
   <div class="fd-container">
     <div class="fd-section-head reveal">
@@ -358,6 +366,12 @@
 </section>
 
 <!-- ============ CONTACT / CTA FINAL ============ -->
+<div class="fd-bande">
+  <img src="images/ambiance-repos.jpg" alt="" loading="lazy">
+  <div class="fd-bande__voile"></div>
+  <div class="fd-bande__t"><div class="fd-container"><p>On prend le temps. Avant, pendant, et après.</p></div></div>
+</div>
+
 <section class="fd-contact" id="contact">
   <div class="fd-container fd-contact__grid">
     <div class="fd-contact__text reveal">
@@ -413,5 +427,45 @@
 </a>
 
 <script src="js/script.js"></script>
+<script src="js/fond-anime.js"></script>
+<script>
+/* Effets niveau 3 — barre de lecture, parallaxe du héros, lueur des cartes.
+   Aucun effet si le visiteur a demandé moins d'animations. */
+(function(){
+  'use strict';
+  if(!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches){return;}
+  var PETIT = window.matchMedia('(max-width: 860px)').matches,
+      FIN   = window.matchMedia('(hover:hover) and (pointer:fine)').matches,
+      photo = document.querySelector('.fd-hero__bg .v3-photo'),
+      barre = document.createElement('div'), tic = false;
+
+  barre.className = 'v3-lecture';
+  barre.setAttribute('aria-hidden','true');
+  document.body.appendChild(barre);
+
+  function auDefilement(){
+    if(tic){return;} tic = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY || 0,
+          h = document.documentElement.scrollHeight - window.innerHeight;
+      if(photo && !PETIT){ photo.style.translate = '0 ' + (y*0.16).toFixed(1) + 'px'; }
+      barre.style.width = (h > 0 ? Math.min(y/h,1)*100 : 0) + '%';
+      tic = false;
+    });
+  }
+  window.addEventListener('scroll', auDefilement, {passive:true});
+  auDefilement();
+
+  if(FIN && !PETIT){
+    [].forEach.call(document.querySelectorAll('.fd-service-card'), function(carte){
+      carte.addEventListener('mousemove', function(e){
+        var r = carte.getBoundingClientRect();
+        carte.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        carte.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, {passive:true});
+    });
+  }
+})();
+</script>
 </body>
 </html>

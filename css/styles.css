@@ -155,10 +155,18 @@ p { margin: 0 0 1em; }
   overflow: hidden;
 }
 .fd-hero__bg { position: absolute; inset: 0; }
+.fd-hero__bg { overflow: hidden; }
 .fd-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fdKen { from { transform: scale(1.04); } to { transform: scale(1.13); } }
+  .fd-hero__bg img { animation: fdKen 28s ease-in-out infinite alternate; will-change: transform; }
+}
 .fd-hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(34,28,24,.55) 0%, rgba(34,28,24,.72) 60%, rgba(34,28,24,.88) 100%);
+  /* Deux voiles : un vertical pour asseoir le bas, un horizontal parce que le
+     texte est aligné à gauche — sans lui, le titre blanc passe sur le comptoir clair. */
+  background: linear-gradient(100deg, rgba(34,28,24,.90) 0%, rgba(34,28,24,.76) 42%, rgba(34,28,24,.44) 72%, rgba(34,28,24,.30) 100%),
+              linear-gradient(180deg, rgba(34,28,24,.34) 0%, rgba(34,28,24,.52) 60%, rgba(34,28,24,.80) 100%);
 }
 .fd-hero__content { position: relative; z-index: 2; padding-top: 120px; padding-bottom: 80px; max-width: 720px; }
 .fd-hero h1 {
@@ -375,7 +383,8 @@ p { margin: 0 0 1em; }
 .fd-fab .fd-icon { width: 24px; height: 24px; fill: var(--fd-white); }
 
 /* ---------- Reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
@@ -406,4 +415,55 @@ p { margin: 0 0 1em; }
   .fd-hero__actions { flex-direction: column; align-items: stretch; }
   .fd-phone-big { font-size: 1.7rem; }
   .fd-trust__grid { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ===== Ajouts du 14 août 2026 — animations niveau 3 ===== */
+
+/* Bande d'ambiance pleine largeur, avec une phrase par-dessus. */
+.fd-bande { position: relative; overflow: hidden; height: clamp(240px, 34vw, 420px); }
+.fd-bande img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fd-bande__voile { position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(34,28,24,.92) 0%, rgba(34,28,24,.80) 52%, rgba(34,28,24,.46) 78%, rgba(34,28,24,.26) 100%); }
+.fd-bande__t { position: absolute; inset: 0; display: flex; align-items: center; }
+.fd-bande__t p { font-family: var(--fd-serif); color: var(--fd-cream);
+  font-size: clamp(1.3rem, 3vw, 2.2rem); line-height: 1.3; max-width: 20ch; margin: 0; font-style: italic;
+  text-shadow: 0 2px 18px rgba(20,14,10,.55); }
+@media (max-width: 700px) {
+  .fd-bande__voile { background: linear-gradient(180deg, rgba(34,28,24,.72), rgba(34,28,24,.88)); }
+  .fd-bande__t p { max-width: none; }
+}
+
+/* Barre de lecture. */
+.v3-lecture { position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 9999;
+  background: linear-gradient(90deg, var(--fd-terracotta), var(--fd-blush));
+  transition: width .12s linear; pointer-events: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Lueur qui suit la souris sur les cartes de traitement — grand écran seulement. */
+  @media (hover: hover) and (pointer: fine) {
+    .fd-service-card { position: relative; isolation: isolate; }
+    .fd-service-card::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+      border-radius: inherit; transition: opacity .35s ease; pointer-events: none;
+      background: radial-gradient(300px circle at var(--mx,50%) var(--my,50%),
+                  rgba(185,128,95,.16), transparent 70%); }
+    .fd-service-card:hover::before { opacity: 1; }
+  }
+  /* Le reflet qui traverse le bouton principal. */
+  .fd-btn--primary { position: relative; overflow: hidden; }
+  .fd-btn--primary::after { content: ''; position: absolute; top: 0; bottom: 0; left: -70%; width: 45%;
+    transform: skewX(-18deg); pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.32), transparent);
+    transition: left .55s ease; }
+  .fd-btn--primary:hover::after { left: 120%; }
+  /* Les photos avant/après s'ouvrent au défilement. */
+  .fd-ouvre { clip-path: inset(0 0 100% 0); transition: clip-path 1.1s cubic-bezier(.16,1,.3,1); }
+  .fd-ouvre.is-visible { clip-path: inset(0 0 0 0); }
+}
+
+/* Le canvas de l'aurore vit dans .fd-hero__bg en z-index 3 : le contenu doit
+   passer au-dessus, sinon la nappe voile le texte. */
+.fd-hero__content { z-index: 4; }
+@media (max-width: 700px) {
+  .fd-hero__overlay { background: linear-gradient(180deg, rgba(34,28,24,.72) 0%, rgba(34,28,24,.80) 55%, rgba(34,28,24,.90) 100%); }
 }

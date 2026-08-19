@@ -139,6 +139,10 @@ profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera r�
   étaient des exemples fictifs). Lien de navigation retiré aussi, CSS et références du
   kit nettoyés. À recréer le jour où de vrais témoignages de clientes existeront
   (l'ancre s'appelait `#temoignages`).
+- **Deuxième bande d'ambiance RETIRÉE aussi, sur demande de Julien** (photo
+  `ambiance-repos.jpg` + « On prend le temps... » avant le contact). La première bande
+  (« Un visage n'est pas une tendance... », avant les traitements) reste. Le fichier
+  image reste dans `images/` au cas où.
 
 ## À faire / en attente
 

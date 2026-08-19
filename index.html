@@ -28,7 +28,6 @@
       <a href="#approche">Notre approche</a>
       <a href="#services">Traitements</a>
       <a href="#avant-apres">Avant / Après</a>
-      <a href="#temoignages">Témoignages</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -353,30 +352,6 @@
   </div>
 </section>
 
-<!-- ============ TÉMOIGNAGES ============ -->
-<section class="fd-testimonials" id="temoignages">
-  <div class="fd-container">
-    <div class="fd-section-head reveal">
-      <h2>Ce qu'en disent nos clientes</h2>
-      <p class="fd-section-lead fd-muted">Exemples à titre indicatif, à remplacer par les vrais témoignages de la clientèle de FiliDerma.</p>
-    </div>
-    <div class="fd-testimonials__grid">
-      <blockquote class="fd-testimonial fd-testimonial--featured">
-        <p>« Je me suis sentie écoutée du début à la fin. Le résultat est subtil, exactement ce que je voulais. »</p>
-        <cite>Cliente FiliDerma <span class="fd-example-tag">exemple</span></cite>
-      </blockquote>
-      <blockquote class="fd-testimonial">
-        <p>« Une approche vraiment personnalisée, sans pression. Je recommande sans hésiter. »</p>
-        <cite>Cliente FiliDerma <span class="fd-example-tag">exemple</span></cite>
-      </blockquote>
-      <blockquote class="fd-testimonial">
-        <p>« Enfin une clinique qui prend le temps d'expliquer chaque étape avant d'agir. »</p>
-        <cite>Cliente FiliDerma <span class="fd-example-tag">exemple</span></cite>
-      </blockquote>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CONTACT / CTA FINAL ============ -->
 <div class="fd-bande">
   <img src="images/ambiance-repos.jpg" alt="" loading="lazy">
@@ -488,8 +463,6 @@
     background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
     transition:left .55s ease;pointer-events:none}
   .fd-btn--ghost:hover::after{left:120%}
-  .fd-testimonial{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease}
-  .fd-testimonial:hover{transform:translateY(-4px);box-shadow:0 16px 34px -16px rgba(156,102,71,.30)}
 }
 </style>
 <script>
@@ -514,7 +487,7 @@
     var ioC=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){cascade(e.target);ioC.unobserve(e.target);}
     });},{threshold:.15});
-    $$('.fd-hero__content, .fd-trust__grid, .fd-approach__cards, .fd-services__grid, .fd-results__grid, .fd-why__list, .fd-testimonials__grid, .fd-pill-list').forEach(function(el){ioC.observe(el);});
+    $$('.fd-hero__content, .fd-trust__grid, .fd-approach__cards, .fd-services__grid, .fd-results__grid, .fd-why__list, .fd-pill-list').forEach(function(el){ioC.observe(el);});
   }
 
   /* Compteurs : les âges de la frise montent quand ils entrent à l'écran */

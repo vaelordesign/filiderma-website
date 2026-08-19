@@ -135,6 +135,10 @@ profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera r�
   de Windows) : compteurs qui montent, cascade mesurée, survol -6 px, zéro débordement
   horizontal à 1440 et 393 px sur toutes les sections, console propre (seul le favicon
   404 préexistant).
+- **Section Témoignages RETIRÉE le même jour, sur demande de Julien** (les trois avis
+  étaient des exemples fictifs). Lien de navigation retiré aussi, CSS et références du
+  kit nettoyés. À recréer le jour où de vrais témoignages de clientes existeront
+  (l'ancre s'appelait `#temoignages`).
 
 ## À faire / en attente
 
@@ -142,5 +146,5 @@ profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera r�
 - [ ] Vraies photos avant/après (avec consentement des clientes)
 - [ ] Confirmer la liste des services complémentaires
 - [ ] Confirmer les détails de formation (établissement, formateurs) si Dominique veut les mentionner
-- [ ] Vrais témoignages de clientes
+- [ ] Vrais témoignages de clientes — la section a été retirée du site le 19 août 2026 (exemples fictifs) ; la recréer quand il y en aura des vrais
 - [ ] Nom de domaine officiel — en attente, pas urgent (voir section « Nom de domaine » ci-dessus)

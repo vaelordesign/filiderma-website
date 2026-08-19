@@ -401,37 +401,6 @@ section[id] { scroll-margin-top: 84px; }
 }
 .fd-why-item__body p { font-size: .92rem; color: var(--fd-charcoal-soft); margin: 0; }
 
-/* ---------- Témoignages : un vedette + deux ---------- */
-.fd-testimonials { padding: var(--fd-sect) 0; }
-.fd-testimonials__grid {
-  display: grid; grid-template-columns: 1.15fr .85fr; grid-auto-rows: 1fr; gap: 26px;
-}
-.fd-testimonial {
-  margin: 0; background: var(--fd-white); border: 1px solid var(--fd-border);
-  border-radius: var(--fd-radius); padding: 34px 32px; position: relative;
-  display: flex; flex-direction: column; justify-content: center; gap: 6px;
-}
-.fd-testimonial p { font-family: var(--fd-serif); font-size: 1.18rem; font-style: italic; color: var(--fd-brown-dark); line-height: 1.5; margin: 0 0 .8em; }
-.fd-testimonial cite { font-style: normal; font-size: .82rem; color: var(--fd-charcoal-soft); display: flex; align-items: center; gap: 8px; }
-.fd-testimonial--featured {
-  grid-row: span 2;
-  background: var(--fd-brown-dark);
-  border-color: transparent;
-  padding: 52px 46px;
-}
-.fd-testimonial--featured::before {
-  content: "«"; display: block;
-  font-family: var(--fd-serif); font-size: 4.2rem; line-height: .6;
-  color: var(--fd-terracotta); margin-bottom: 18px;
-}
-.fd-testimonial--featured p { color: var(--fd-cream); font-size: clamp(1.4rem, 2vw, 1.7rem); }
-.fd-testimonial--featured cite { color: rgba(248,243,238,.6); }
-.fd-example-tag {
-  background: var(--fd-blush); color: var(--fd-terracotta-dark);
-  font-size: .68rem; text-transform: uppercase; letter-spacing: .06em;
-  padding: 2px 8px; border-radius: 999px; font-weight: 600;
-}
-
 /* ---------- Contact ---------- */
 .fd-contact { background: var(--fd-brown-dark); color: var(--fd-cream); padding: var(--fd-sect) 0; }
 .fd-contact h2 { color: var(--fd-white); }
@@ -505,8 +474,6 @@ section[id] { scroll-margin-top: 84px; }
   .fd-approach-card::before { top: 4px; left: -6px; }
   .fd-services__grid, .fd-results__grid { grid-template-columns: 1fr; }
   .fd-service-card, .fd-service-card--lg { grid-column: auto; }
-  .fd-testimonials__grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .fd-testimonial--featured { grid-row: auto; padding: 40px 32px; }
   .fd-fab { display: flex; }
 }
 

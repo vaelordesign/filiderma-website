@@ -36,7 +36,7 @@ Le site affiche aussi une liste générique de soins courants en médico-esthét
 - D'autres souhaitent **corriger un détail précis dès la trentaine**.
 - **Âge moyen de la clientèle : la quarantaine.**
 
-Ce positionnement est repris dans la section « Notre approche » du site (3 cartes : 20 ans / 30 ans / 40 ans — chiffres ronds choisis par Dominique, ajustés depuis les valeurs initiales 18/25/40 tirées de l'enregistrement audio).
+Ce positionnement est repris dans la section « Notre approche » du site (frise reliée : 20 ans / 30 ans / 40 ans — chiffres ronds choisis par Dominique, ajustés depuis les valeurs initiales 18/25/40 tirées de l'enregistrement audio). ⚠️ Corrigé le 19 août 2026 : les cartes 20 ans et 30 ans étaient **inversées** par rapport à cette fiche (le site disait « corriger dès 20 ans, prévenir dès 30 ans ») — remis dans le bon sens : **20 ans = prévenir, 30 ans = corriger**.
 
 ## Formation de Dominique Filion
 
@@ -101,6 +101,40 @@ Pas encore de domaine officiel (ex. `filiderma.ca`) — décision prise le 24 ju
    - Ajout des traitements **PRP** et **Microneedling**
    - Usage thérapeutique des neuromodulateurs (migraines, bruxisme, hyperhidrose) : d'abord exclu du site sur demande, puis **ajouté** sur demande inverse le même jour
 9. **24 juillet** — Julien prévoit de créer un nouveau compte Claude ; confirmé que rien (fichiers, dépôt GitHub, site en ligne) n'est lié au compte Claude — tout reste accessible tant que c'est le même ordinateur (OneDrive) et le même compte GitHub.
+
+## Refonte visuelle du 19 août 2026 (amélioration profonde, identité conservée)
+
+Demande de Julien : « retravaille le site en utilisant bien les skills installés »
+(`design-taste-frontend` + `animations-elementor`). Choix validé par Julien : amélioration
+profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera régénéré
+**après** validation du nouveau look. Ce qui a changé :
+
+- **Typographie et espacements montés d'un cran** : titres plus grands (Cormorant),
+  respiration des sections en `clamp(88px…150px)`, corps en Jost 300, italique de la même
+  famille pour l'emphase (« naturelle » dans le héros).
+- **Héros resserré** : « Sur rendez-vous » intégré au sur-titre (souligné d'un trait
+  terracotta), note sous les boutons supprimée, titre garanti sur 2 lignes au bureau.
+- **« Notre approche » devient une frise reliée** (ligne + points terracotta, comptage
+  animé des âges 0→20/30/40) au lieu de 3 cartes identiques. **Contenu 20/30 ans remis
+  dans le bon sens** (voir ⚠️ plus haut).
+- **Traitements hiérarchisés** : 2 grandes cartes « piliers » (neuromodulateurs,
+  comblement) + 3 cartes standard, léger dégradé blush sur les piliers.
+- **« Pourquoi FiliDerma » en liste éditoriale numérotée** (01-05, filets fins) au lieu
+  de cartes.
+- **Témoignage vedette** : première citation en grande carte sombre avec « décoratif,
+  les deux autres empilées à droite.
+- **Kit animations niveau 2 injecté** (bloc avant `</body>`) : cascade 85 ms sur héros,
+  bandeau de confiance, frise, traitements, avant/après, pourquoi, témoignages, pilules ;
+  compteurs d'âges ; reflet sur les boutons fantômes ; soulèvement des témoignages.
+  Piège trouvé et corrigé (reporté dans le skill) : libérer l'animation à `animationend`,
+  sinon son remplissage `both` bloque les survols.
+- **Ménage des tics** : tirets cadratins remplacés (parenthèses/deux-points), étiquettes
+  de section réduites à 3 (héros, traitements, contact), balises `og:` ajoutées au `<head>`,
+  `:focus-visible` et `scroll-margin-top` ajoutés.
+- **Vérifié via Playwright** (le navigateur intégré hérite du `prefers-reduced-motion`
+  de Windows) : compteurs qui montent, cascade mesurée, survol -6 px, zéro débordement
+  horizontal à 1440 et 393 px sur toutes les sections, console propre (seul le favicon
+  404 préexistant).
 
 ## À faire / en attente
 

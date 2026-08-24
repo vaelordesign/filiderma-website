@@ -67,8 +67,8 @@ Site statique autonome (HTML/CSS/JS), sans base de données ni back-end — les 
 ## Emplacement des fichiers et sauvegardes
 
 - **Dossier local** : `C:\Users\charl\OneDrive\Bureau\Siteweb\Dominique\` — synchronisé automatiquement dans OneDrive (donc déjà sauvegardé dans le cloud Microsoft, indépendamment de tout compte Claude).
-- **Dépôt GitHub** (source de vérité, sauvegarde + historique complet) : https://github.com/charlesmartel2506/filiderma-website — compte GitHub `charlesmartel2506`.
-- **Site en ligne (GitHub Pages)** : https://charlesmartel2506.github.io/filiderma-website/ — gratuit, pas de facturation liée au trafic (seules des limites très généreuses, ~100 Go/mois, très loin d'être atteintes par un site de clinique). Risque de fermeture par GitHub quasi nul (seulement en cas d'abus/violation de leurs conditions).
+- **Dépôt GitHub** (source de vérité, sauvegarde + historique complet) : https://github.com/vaelordesign/filiderma-website — compte GitHub `vaelordesign` (renommé depuis `charlesmartel2506` le 19 août 2026 — même compte, mêmes dépôts, mais l'ancienne URL `charlesmartel2506.github.io` ne fonctionne plus, GitHub Pages ne redirige pas automatiquement).
+- **Site en ligne (GitHub Pages)** : https://vaelordesign.github.io/filiderma-website/ — gratuit, pas de facturation liée au trafic (seules des limites très généreuses, ~100 Go/mois, très loin d'être atteintes par un site de clinique). Risque de fermeture par GitHub quasi nul (seulement en cas d'abus/violation de leurs conditions).
 - **Aperçu local pour tester avant publication** : config `filiderma` dans `.claude/launch.json` (à la racine de `Bureau/Typing/`) → lance `npx http-server` sur le port 8420.
 
 ### Comment publier une modification (rappel pour Claude, futures sessions)

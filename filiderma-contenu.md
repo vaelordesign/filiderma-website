@@ -42,18 +42,18 @@ Ce positionnement est repris dans la section « Notre approche » du site (frise
 
 Le site indique qu'elle est **infirmière clinicienne**, formée par des formateurs reconnus en médecine esthétique pour l'injection de neuromodulateurs, d'agents de comblement et de biostimulants. **Aucun nom d'établissement ou de formateur spécifique n'a été fourni** — à ajouter si Dominique souhaite le mentionner (ça renforce la crédibilité).
 
-## Photos utilisées (toutes à remplacer par les vraies)
+## Photos utilisées
 
-Toutes les images sont des **photos libres de droits (Unsplash)**, choisies comme placeholders, stockées dans `images/` :
+Depuis le **24 août 2026**, deux vraies photos remplacent les placeholders :
 
-| Fichier | Usage sur le site | À remplacer par |
+| Fichier | Usage sur le site | Statut |
 |---|---|---|
-| `dominique-placeholder.jpg` | Photo de Dominique (section À propos) | Vraie photo de Dominique Filion |
-| `hero-clinique.jpg` | Image de fond de la section d'accueil | Photo de la vraie clinique, si disponible |
-| `avant-apres-1.jpg`, `-2.jpg`, `-3.jpg` | Section « Avant / Après » — curseur interactif | Vraies photos avant/après de clientes de FiliDerma, **avec leur consentement explicite** |
-| `services-deco.jpg` | Réserve (non utilisée pour l'instant) | — |
+| `dominique-filion.jpg` | Photo de Dominique (section À propos) | **Vraie photo**, fournie par Julien. Recadrée en 640×800 (4:5, tête-épaules) pour exclure un logo d'un ancien employeur visible sur sa tenue — recadrage mécanique seulement, aucune retouche par IA. Photo source originale : `IMG_1464.JPEG`. |
+| `resultat-1-avant.jpg` / `resultat-1-apres.jpg` | Section « Avant / Après » — curseur interactif | **Vrai résultat** (comblement des lèvres), avec le consentement de la cliente d'après Julien. Obtenue à partir d'une seule photo composite (avant en haut, après en bas) fournie par Julien, séparée en deux fichiers. Qualité source modeste (image compressée/basse résolution) — à remplacer par une version plus nette si Dominique en fournit une meilleure un jour. |
+| `hero-clinique.jpg`, `ambiance-soin.jpg` | Fond du héros, bandeau avant les traitements | Toujours des photos génériques (libres de droits), à remplacer si Dominique fournit ses propres photos de clinique. |
+| `services-deco.jpg`, `ambiance-repos.jpg` | Réserve (non utilisées actuellement) | — |
 
-**Important — pourquoi ce ne sont pas de vraies photos avant/après** : présenter les résultats d'une autre clinique comme s'il s'agissait de ceux de Dominique serait trompeur pour les clientes et poserait un problème de droits d'auteur / vie privée envers les vraies patientes photographiées. Chaque carte « avant/après » utilise donc **la même image des deux côtés**, avec un ruban « Exemple » bien visible — le curseur fonctionne déjà, il suffit de remplacer les fichiers images quand les vraies photos seront disponibles (garder les mêmes noms de fichiers, ou mettre à jour les chemins `src` dans `index.html`).
+**Rappel du principe qui a guidé ce choix (toujours valable pour toute future photo)** : ne jamais présenter les résultats d'une autre clinique comme s'il s'agissait de ceux de Dominique — trompeur pour les clientes et risque de droits d'auteur / vie privée envers de vraies patientes d'ailleurs. Les deux photos ci-dessus sont acceptées parce qu'elles sont les vraies, fournies directement par Julien pour ce site.
 
 ## Structure technique du site
 
@@ -144,10 +144,17 @@ profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera r�
   (« Un visage n'est pas une tendance... », avant les traitements) reste. Le fichier
   image reste dans `images/` au cas où.
 
+## Conversion WordPress / Elementor (démarrée 12 août, mise à jour 24 août 2026)
+
+- Gabarit : `C:\Users\charl\OneDrive\Bureau\Typing\filiderma-elementor-template\` — voir son `INSTRUCTIONS.txt` pour la marche à suivre complète et l'historique détaillé.
+- Plugin : `C:\Users\charl\OneDrive\Bureau\Typing\filiderma-wordpress-plugin\` (v1.1.0) — deux shortcodes : `[filiderma_traitements]` (fiches ajoutables par Dominique) et `[filiderma_avant_apres]` (curseur animé identique à la démo, ajouté le 24 août 2026).
+- **24 août 2026** : le gabarit a été mis à jour pour utiliser les mêmes vraies photos que la démo (Dominique + avant/après lèvres), et pour rester identique à la démo statique (retrait de Témoignages et de la deuxième bande d'ambiance dans le gabarit, qui traînaient encore alors qu'ils avaient été retirés de la démo le 19 août).
+- Pas encore testé sur un vrai WordPress cette fois-ci (outils de prévisualisation locale en panne pendant la session) — à faire par Julien : installer/mettre à jour le plugin, réimporter le gabarit, vérifier en ligne.
+
 ## À faire / en attente
 
-- [ ] Vraie photo de Dominique Filion
-- [ ] Vraies photos avant/après (avec consentement des clientes)
+- [x] Vraie photo de Dominique Filion — ajoutée le 24 août 2026
+- [x] Vraie photo avant/après — une première ajoutée le 24 août 2026 (comblement des lèvres) ; d'autres pourront être ajoutées de la même façon plus tard
 - [ ] Confirmer la liste des services complémentaires
 - [ ] Confirmer les détails de formation (établissement, formateurs) si Dominique veut les mentionner
 - [ ] Vrais témoignages de clientes — la section a été retirée du site le 19 août 2026 (exemples fictifs) ; la recréer quand il y en aura des vrais

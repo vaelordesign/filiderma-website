@@ -75,6 +75,7 @@
     window.addEventListener("resize", syncImgWidth);
 
     frame.addEventListener("pointerdown", function (e) {
+      e.preventDefault(); // bloque le glisser natif d'image (Firefox surtout), qui volerait le geste
       dragging = true;
       frame.setPointerCapture(e.pointerId);
       updateFromClientX(e.clientX);

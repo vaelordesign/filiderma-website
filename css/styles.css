@@ -335,6 +335,7 @@ section[id] { scroll-margin-top: 84px; }
   position: relative; overflow: hidden; border-radius: var(--fd-radius);
   aspect-ratio: 2/1; box-shadow: var(--fd-shadow); cursor: ew-resize;
   user-select: none;
+  touch-action: pan-y; /* sans ça, le glissé horizontal sur téléphone devient un défilement et coupe le drag */
 }
 .fd-slider__img { width: 100%; height: 100%; object-fit: cover; }
 .fd-slider__img--before { position: absolute; inset: 0; }

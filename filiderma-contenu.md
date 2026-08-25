@@ -170,10 +170,41 @@ Julien a connecté Claude à son compte WordPress.com (connexion MCP — permiss
 3. **Le livrable client reste le couple JSON + zip** — l'injection directe ne vaut que pour le site de test de Julien. Chez un client : zip d'abord (+ « Importer les 5 traitements »), JSON ensuite (Templates > Saved Templates > Import), page Elementor Canvas, insérer, publier. L'import par l'interface rapatrie aussi les images dans la médiathèque, ce que l'injection ne fait pas (les images du site de test restent servies par GitHub Pages, réécrites par le CDN Jetpack — ça fonctionne).
 4. Le panneau navigateur intégré est un **onglet caché** : IntersectionObserver, requestAnimationFrame et le chargement paresseux des images n'y tournent pas — ne jamais y tester des animations ni conclure qu'une image est cassée (`complete: false`). Playwright rend pour vrai ; si son profil se verrouille (« Browser is already in use »), supprimer les fichiers Singleton* dans `AppData\Local\ms-playwright-mcp\`.
 
+### Réalignement de la page WordPress sur la démo (25 août 2026)
+
+Constat de Julien : la page WordPress avait dérivé de la démo statique. Vérification faite,
+elle portait encore plusieurs textes **d'avant la refonte du 19 août** — l'injection du
+24 août avait aligné les photos et les animations, pas tous les textes. 31 différences
+corrigées, détaillées dans `wordpress/LISEZ-MOI.md`, avec les deux instantanés
+`_elementor_data` (avant / après) versés dans `wordpress/` pour pouvoir annuler.
+
+Les trois qui comptaient :
+
+- ⚠️ **Les cartes 20 ans / 30 ans étaient encore inversées sur WordPress** (« 20 ans =
+  corriger », « 30 ans = prévenir »). C'est exactement l'erreur relevée et corrigée dans la
+  démo le 19 août, jamais propagée au gabarit. Remise dans le bon sens.
+- **Section de Dominique** : titre sur une seule ligne avec tiret cadratin au lieu de deux
+  lignes, citation en exergue fondue dans un paragraphe au lieu d'être un bloc, phrase
+  « Jamais de plan générique : toujours une approche sur mesure » absente, et photo affichée
+  brute (ni format 4/5, ni coins arrondis, ni cadre décalé derrière).
+- **Héros** : paragraphe en version longue d'avant la refonte, « sur rendez-vous » pas
+  intégré au sur-titre, « naturelle » pas en italique, et la note sous les boutons
+  (supprimée de la démo le 19 août) encore présente.
+
+Ajouté au passage : la règle du trait de survol du menu (`.fd-navlink`), qui manquait
+complètement côté WordPress — ce qu'on voyait au survol d'un lien de menu était le reflet
+blanc générique des boutons Elementor, qui balaie toute la hauteur du bouton au lieu du
+trait terracotta de 1,5 px sous le lien.
+
+**Leçon** : le gabarit Elementor et la démo statique divergent silencieusement dès qu'une
+correction n'est faite que d'un côté. Après toute modification de `index.html`, vérifier la
+page WordPress — ou l'inverse.
+
 ### Il reste à faire par Julien sur son site de test (entretien, sans urgence)
 
 - [ ] Téléverser le zip **v1.1.1** (Extensions > Ajouter > Téléverser > « Remplacer la version actuelle ») — le site tourne avec la v1.1.0, fonctionnelle mais sans les correctifs tactiles du curseur
 - [ ] Supprimer les 3 vieux templates « FiliDerma – Accueil » (Templates > Saved Templates, ids 574/590/609) — plus utilisés, et garder des copies périmées mène à insérer la mauvaise un jour
+- [ ] Reporter les corrections du 25 août dans le gabarit local `filiderma-elementor-template` (sur le poste de Julien) : il porte encore les anciens textes, dont les cartes 20/30 ans inversées. Le JSON aligné est dans `wordpress/page577-aligne-sur-demo-25aout.json`
 
 ## À faire / en attente
 

@@ -1,0 +1,57 @@
+# Contenu Elementor de la page 577 (site WordPress de test)
+
+Deux instantanés de la méta `_elementor_data` de la page d'accueil du site de test
+(https://charlesmartel2506-pyftz.wpcomstaging.com/, page 577), gardés ici parce que
+le dépôt est la seule sauvegarde durable — les sessions Claude, elles, sont jetables.
+
+| Fichier | Ce que c'est |
+|---|---|
+| `page577-avant-alignement-25aout.json` | L'état de la page **avant** le 25 août 2026. À réinjecter tel quel pour tout annuler. |
+| `page577-aligne-sur-demo-25aout.json` | L'état **après** alignement sur la démo statique. C'est ce qui est en ligne. |
+
+## Pourquoi cet alignement
+
+La page WordPress avait divergé de la démo statique (`index.html`) : elle portait encore
+plusieurs textes d'avant la refonte du 19 août 2026. Trente et une différences corrigées,
+dont trois qui comptaient vraiment :
+
+1. **Les cartes « 20 ans » et « 30 ans » étaient inversées** — la page disait « 20 ans :
+   corriger » et « 30 ans : prévenir ». C'est l'erreur déjà relevée et corrigée dans la
+   démo le 19 août, qui n'avait jamais été propagée ici. Remis dans le bon sens :
+   **20 ans = prévenir, 30 ans = corriger**.
+2. **La section de Dominique** : le titre était sur une seule ligne avec un tiret cadratin,
+   la citation en exergue (« La beauté se cultive avec finesse… ») avait été fondue dans un
+   paragraphe au lieu d'être un bloc à part, et la phrase « Jamais de plan générique :
+   toujours une approche sur mesure » manquait.
+3. **Le héros** : le paragraphe était la version longue d'avant la refonte, le sur-titre
+   n'intégrait pas « sur rendez-vous », « naturelle » n'était pas en italique, et la note
+   sous les boutons (retirée de la démo le 19 août) traînait encore.
+
+Le reste : les quatre étiquettes de section en trop (la démo n'en garde que trois — héros,
+traitements, contact), les tirets cadratins remplacés par des deux-points ou des points
+(ménage fait dans la démo le 19 août), le bouton « Appeler pour réserver » redevenu
+« Prendre rendez-vous » pointant vers `#contact`, et les cinq arguments de la section
+« Pourquoi » qui avaient été tronqués.
+
+## Deux ajouts de CSS dans le bloc HTML de fin de page
+
+- `.fd-navlink` sur les cinq liens du menu : rétablit le trait terracotta de 1,5 px qui
+  pousse depuis la gauche **sous** le lien au survol, comme `.fd-nav a::after` dans la
+  démo. Cette règle neutralise aussi, sur ces liens-là, le reflet blanc générique
+  `.elementor-button::after` qui balaie toute la hauteur du bouton — c'était lui qu'on
+  voyait passer par-dessus le texte du menu.
+- `.fd-portrait` sur la photo de Dominique : format 4/5, coins arrondis à 18 px, ombre
+  portée et cadre décalé derrière, c'est-à-dire le traitement que `.fd-about__media`
+  applique dans la démo. Sans ça, WordPress affichait la photo brute, sans cadre.
+
+## Comment annuler
+
+Réinjecter `page577-avant-alignement-25aout.json` dans la méta `_elementor_data` de la
+page 577 (par l'API REST, en `context=edit`), ou l'importer dans Elementor.
+
+## Rappel du piège de cache
+
+Le rendu public ne se purge pas tout seul après une écriture REST : le site peut servir
+l'ancienne version pendant un moment (observé jusqu'à ~1 h le 24 août). Pour forcer :
+« Mettre à jour » dans l'éditeur Elementor, ou Elementor → Outils → Regenerate CSS &
+flush cache.

@@ -147,9 +147,33 @@ profonde en gardant l'identité crème/terracotta ; le gabarit Elementor sera r�
 ## Conversion WordPress / Elementor (démarrée 12 août, mise à jour 24 août 2026)
 
 - Gabarit : `C:\Users\charl\OneDrive\Bureau\Typing\filiderma-elementor-template\` — voir son `INSTRUCTIONS.txt` pour la marche à suivre complète et l'historique détaillé.
-- Plugin : `C:\Users\charl\OneDrive\Bureau\Typing\filiderma-wordpress-plugin\` (v1.1.0) — deux shortcodes : `[filiderma_traitements]` (fiches ajoutables par Dominique) et `[filiderma_avant_apres]` (curseur animé identique à la démo, ajouté le 24 août 2026).
+- Plugin : `C:\Users\charl\OneDrive\Bureau\Typing\filiderma-wordpress-plugin\` (**v1.1.1**) — deux shortcodes : `[filiderma_traitements]` (fiches ajoutables par Dominique) et `[filiderma_avant_apres]` (curseur animé identique à la démo, ajouté le 24 août 2026). La v1.1.1 corrige le curseur sur téléphone (`touch-action`) et Firefox (`preventDefault`), et blinde la requête de la grille.
 - **24 août 2026** : le gabarit a été mis à jour pour utiliser les mêmes vraies photos que la démo (Dominique + avant/après lèvres), et pour rester identique à la démo statique (retrait de Témoignages et de la deuxième bande d'ambiance dans le gabarit, qui traînaient encore alors qu'ils avaient été retirés de la démo le 19 août).
-- Pas encore testé sur un vrai WordPress cette fois-ci (outils de prévisualisation locale en panne pendant la session) — à faire par Julien : installer/mettre à jour le plugin, réimporter le gabarit, vérifier en ligne.
+
+### Photo de Dominique — version finale (24 août 2026, soir)
+
+Après la version fond crème du matin, Dominique a demandé un fond « mélange de couleurs ». Trois variantes produites (A crème/blush/terracotta, B rose poudré/doré, C sauge/crème) — **Julien a choisi la C (sauge/crème)**, en ligne depuis. Méthode conservée : détourage fait par Julien dans Canva, masque extrait par double export noir/blanc, appliqué à la photo originale haute résolution, fond dégradé en mailles composé avec sharp (`composer-variantes.js`). Le design Canva de Julien a été rendu à son état d'origine après l'opération.
+
+### Le site tourne sur le WordPress de test de Julien (24 août 2026, soir)
+
+Julien a connecté Claude à son compte WordPress.com (connexion MCP — permissions à activer sur wordpress.com/me/mcp, elles sont toutes éteintes par défaut). Résultat, TOUT fait à distance sans toucher à wp-admin :
+
+- **La page FiliDerma (id 577) est la page d'accueil** de https://charlesmartel2506-pyftz.wpcomstaging.com/ — renommée « FiliDerma — Clinique médico-esthétique à Laval » (l'ancienne adresse /elementor-577/ redirige vers la racine).
+- **Le contenu Elementor est injecté directement en base** (`pages.update` sur la méta `_elementor_data`) depuis le JSON canonique — 3 injections le 24 août, chacune vérifiée identique caractère pour caractère. Une sauvegarde de l'ancien contenu de la page est dans `filiderma-elementor-template/sauvegarde-page577-avant-injection.json`.
+- **Kit d'animations complété dans le gabarit** (demande « il manque terriblement d'animation ») : cascade d'apparition par section, compteurs 20/30/40 ans, soulèvement des cartes, en plus du fond aurore, de la barre de lecture et du reflet des boutons déjà présents. Vérifié fonctionnel via Playwright (compteurs capturés à mi-course), puis confirmé actif sur le site public.
+- **Vérification finale publique (24 août, soir)** : photo sauge servie (comparaison pixel par pixel avec l'original, y compris à travers le CDN d'images de WordPress.com), curseur avant/après et grille de traitements rendus par le plugin, animations actives, aucun lien orphelin, aucun débordement.
+
+### Leçons techniques de la connexion WordPress (pour les futures sessions Claude)
+
+1. `_elementor_data` est **lisible et modifiable par l'API REST** (méta exposée en context=edit) — la page d'un site de test peut être mise à jour depuis `build.js` sans import manuel. Le CSS de page (`post-577.css`) se **régénère tout seul** à la première visite après injection.
+2. **MAIS le cache de rendu ne se purge pas sur une écriture REST** — le site public peut servir l'ancienne version pendant un long moment (observé : ~1 h ce soir-là, tombé tout seul ; maximum théorique 24 h). Purge immédiate : « Mettre à jour » dans l'éditeur Elementor ou Elementor → Outils → Regenerate CSS & flush cache. Ne pas paniquer si le site semble « en retard » sur la base.
+3. **Le livrable client reste le couple JSON + zip** — l'injection directe ne vaut que pour le site de test de Julien. Chez un client : zip d'abord (+ « Importer les 5 traitements »), JSON ensuite (Templates > Saved Templates > Import), page Elementor Canvas, insérer, publier. L'import par l'interface rapatrie aussi les images dans la médiathèque, ce que l'injection ne fait pas (les images du site de test restent servies par GitHub Pages, réécrites par le CDN Jetpack — ça fonctionne).
+4. Le panneau navigateur intégré est un **onglet caché** : IntersectionObserver, requestAnimationFrame et le chargement paresseux des images n'y tournent pas — ne jamais y tester des animations ni conclure qu'une image est cassée (`complete: false`). Playwright rend pour vrai ; si son profil se verrouille (« Browser is already in use »), supprimer les fichiers Singleton* dans `AppData\Local\ms-playwright-mcp\`.
+
+### Il reste à faire par Julien sur son site de test (entretien, sans urgence)
+
+- [ ] Téléverser le zip **v1.1.1** (Extensions > Ajouter > Téléverser > « Remplacer la version actuelle ») — le site tourne avec la v1.1.0, fonctionnelle mais sans les correctifs tactiles du curseur
+- [ ] Supprimer les 3 vieux templates « FiliDerma – Accueil » (Templates > Saved Templates, ids 574/590/609) — plus utilisés, et garder des copies périmées mène à insérer la mauvaise un jour
 
 ## À faire / en attente
 

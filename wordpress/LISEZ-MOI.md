@@ -76,6 +76,24 @@ Relu après écriture : identique à la cible au caractère près (sha256 concor
 57 926 caractères) — l'espace manquante de la veille dans le commentaire de
 `fond-anime.js` reste telle quelle, toujours sans effet.
 
+## Nouvelle méthode (25 août, fin de journée) : import manuel par Julien
+
+Les écritures REST directes ne régénèrent pas le CSS qu'Elementor met en cache — les
+réglages sont dans la base mais le rendu ne bouge pas. Nouvelle approche : Claude
+produit les fichiers, Julien les importe dans Elementor (l'import régénère le CSS).
+
+| Fichier | Usage |
+|---|---|
+| `filiderma-accueil.json` | **Gabarit Elementor importable** : Templates → Saved Templates → Import Templates. Héros condensé pour de vrai (titre 64 px comme la démo, interligne 1,06, paragraphe bridé à 570 px, trait terracotta sous le sur-titre). |
+| `filiderma-accueil.zip` | Le même gabarit en zip (Elementor accepte les deux). |
+| `filiderma-accueil-elementor-data.json` | La donnée brute seule, à coller dans `_elementor_data` si on repasse un jour par l'API. |
+
+Marche à suivre : (1) Templates → Saved Templates → Import Templates → choisir le
+.json ou le .zip. (2) Ouvrir la page d'accueil dans Elementor, supprimer toutes les
+sections. (3) Icône dossier « Ajouter un gabarit » → Mes templates → « FiliDerma –
+Accueil (héros condensé, 25 août 2026) » → Insérer. (4) Mettre à jour. L'import et la
+mise à jour régénèrent le CSS — pas de piège de cache.
+
 ## Comment annuler
 
 Réinjecter `page577-avant-alignement-25aout.json` dans la méta `_elementor_data` de la

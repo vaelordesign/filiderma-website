@@ -175,8 +175,10 @@ Julien a connecté Claude à son compte WordPress.com (connexion MCP — permiss
 Constat de Julien : la page WordPress avait dérivé de la démo statique. Vérification faite,
 elle portait encore plusieurs textes **d'avant la refonte du 19 août** — l'injection du
 24 août avait aligné les photos et les animations, pas tous les textes. 31 différences
-corrigées, détaillées dans `wordpress/LISEZ-MOI.md`, avec les deux instantanés
-`_elementor_data` (avant / après) versés dans `wordpress/` pour pouvoir annuler.
+corrigées, **écrites directement dans la base et relues pour vérification** : les
+15 sections de contenu et le bloc CSS sont identiques au caractère près à la référence
+(un seul écart sur 57 477 caractères, une espace dans un commentaire de `fond-anime.js`).
+Détail dans `wordpress/LISEZ-MOI.md`, instantanés avant / après dans `wordpress/`.
 
 Les trois qui comptaient :
 
@@ -204,7 +206,7 @@ page WordPress — ou l'inverse.
 
 - [ ] Téléverser le zip **v1.1.1** (Extensions > Ajouter > Téléverser > « Remplacer la version actuelle ») — le site tourne avec la v1.1.0, fonctionnelle mais sans les correctifs tactiles du curseur
 - [ ] Supprimer les 3 vieux templates « FiliDerma – Accueil » (Templates > Saved Templates, ids 574/590/609) — plus utilisés, et garder des copies périmées mène à insérer la mauvaise un jour
-- [ ] Reporter les corrections du 25 août dans le gabarit local `filiderma-elementor-template` (sur le poste de Julien) : il porte encore les anciens textes, dont les cartes 20/30 ans inversées. Le JSON aligné est dans `wordpress/page577-aligne-sur-demo-25aout.json`
+- [ ] Reporter les corrections du 25 août dans le gabarit local `filiderma-elementor-template` (sur le poste de Julien) : il porte encore les anciens textes, dont les cartes 20/30 ans inversées. Le JSON en ligne est dans `wordpress/page577-en-ligne-25aout.json`
 
 ## À faire / en attente
 

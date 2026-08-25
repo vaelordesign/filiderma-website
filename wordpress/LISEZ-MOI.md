@@ -61,6 +61,21 @@ avec la référence :
 Un brouillon jetable (page 614) a servi de banc d'essai pour valider la transmission
 avant de toucher à la page publiée ; il a été mis à la corbeille ensuite.
 
+## Retouche du même jour : héros condensé
+
+Sur demande de Julien, le bloc de texte du héros a été resserré pour retrouver la
+densité de la démo (`.fd-hero` / `.fd-hero__content`) :
+
+- section : hauteur minimale 680 → 620 px, rembourrage 140/80 → 112/64 (92/48 sur mobile) ;
+- sur-titre : interlettrage 3 px, marge basse 8 px (il se colle au titre) ;
+- titre : interligne 1,1 → 1,06 em, interlettrage −0,5 px, marge basse 14 px ;
+- paragraphe : largeur bridée à 570 px comme `.fd-hero__lead` (il casse en trois
+  lignes courtes au lieu de s'étaler), interligne 1,6, marges 14/24.
+
+Relu après écriture : identique à la cible au caractère près (sha256 concordant sur
+57 926 caractères) — l'espace manquante de la veille dans le commentaire de
+`fond-anime.js` reste telle quelle, toujours sans effet.
+
 ## Comment annuler
 
 Réinjecter `page577-avant-alignement-25aout.json` dans la méta `_elementor_data` de la

@@ -84,7 +84,7 @@ produit les fichiers, Julien les importe dans Elementor (l'import régénère le
 
 | Fichier | Usage |
 |---|---|
-| `filiderma-accueil.json` | **Gabarit Elementor importable** : Templates → Saved Templates → Import Templates. Héros condensé pour de vrai (titre 64 px comme la démo, interligne 1,06, paragraphe bridé à 570 px, trait terracotta sous le sur-titre). |
+| `filiderma-accueil.json` | **Gabarit Elementor importable** : Templates → Saved Templates → Import Templates. Héros condensé (titre 64 px comme la démo, interligne 1,06, paragraphe bridé à 570 px, trait terracotta sous le sur-titre). **Version « autonome » du 25 août : les deux shortcodes du plugin (`[filiderma_traitements]`, `[filiderma_avant_apres]`) sont remplacés par des widgets HTML complets — les 5 cartes de traitements et le curseur avant/après avec leur CSS et leur JS embarqués. Le gabarit n'a plus AUCUNE dépendance au plugin : il s'importe tel quel sur n'importe quel WordPress avec Elementor gratuit.** |
 | `filiderma-accueil.zip` | Le même gabarit en zip (Elementor accepte les deux). |
 | `filiderma-accueil-elementor-data.json` | La donnée brute seule, à coller dans `_elementor_data` si on repasse un jour par l'API. |
 
